@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buku Sakti Simple</title>
+  <link rel="icon" href="mus.png" type="image/png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav id="navbar">
+    <img src="mus.png" alt="Logo" class="logo" />
+    <header>Dokumentasi Frontend Engineer</header>
+    <a class="nav-link" href="#pengantar">Pengantar</a>
+    <a class="nav-link" href="#instalasi">Instalasi Axios</a>
+    <a class="nav-link" href="#dasar-react">Dasar React + API</a>
+    <a class="nav-link" href="#tampilkan-gambar">Tampilkan Gambar</a>
+    <a class="nav-link" href="#tampilkan-angka">Tampilkan AngkaB</a>
+    <a class="nav-link" href="#tipe-objek">Tipe Objek (TypeScript)</a>
+    <a class="nav-link" href="#js-ke-ts">JS ke TS</a>
+    <a class="nav-link" href="#deep-dive">Deep Dive & Tips</a>
+    <a class="nav-link" href="#push-github">Push Code ke GitHub</a>
+    <a class="nav-link" href="#vscode">Koding di VSCode</a>
+    <a class="nav-link" href="#ekstensi-drink">Drink Water Reminder</a>
+    <a class="nav-link" href="#tips-deep">Tips Lanjutan</a>
+    <a class="nav-link" href="#struktur">Struktur Folder</a>    
+    <a class="nav-link" href="#penutup">Penutup</a>
+  </nav>
+
+  <main id="main-doc">
+    <section class="main-section" id="pengantar">
+      <header>Pengantar</header>
+      <p>
+        Dokumentasi ini membahas bagaimana cara menggunakan React untuk mengambil data dari API menggunakan Axios, serta bagaimana TypeScript membantu membuat kode lebih aman, rapi, dan mudah dikembangkan.
+      </p>
+    </section>
+
+    <section class="main-section" id="instalasi">
+      <header>Instalasi Axios</header>
+      <p>Pasang Axios dengan perintah berikut:</p>
+      <code>
+        npm install axios<br />
+        npm install --save-dev @types/axios
+      </code>
+    </section>
+
+    <section class="main-section" id="dasar-react">
+      <header>Dasar React + API</header>
+      <p>Contoh mengambil data API dengan React:</p>
+      <code>
+        import React, &#123; useEffect, useState &#125; from 'react';<br />
+        import axios from 'axios';<br /><br />
+
+        const App = () =&gt; &#123;<br />
+        &nbsp;&nbsp;const [data, setData] = useState([]);<br /><br />
+
+        &nbsp;&nbsp;useEffect(() =&gt; &#123;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;axios.get('https://api.example.com/items')<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.then(res =&gt; setData(res.data))<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.catch(err =&gt; console.error(err));<br />
+        &nbsp;&nbsp;&#125;, []);<br /><br />
+
+        &nbsp;&nbsp;return (&lt;div&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&#123;data.map(item =&gt; &lt;p&gt;&#123;item.title&#125;&lt;/p&gt;)&#125;<br />
+        &nbsp;&nbsp;);<br />
+        &#125;;
+      </code>
+    </section>
+
+    <section class="main-section" id="tampilkan-gambar">
+      <header>Tampilkan Gambar</header>
+      <p>Jika API mengembalikan URL gambar:</p>
+      <code>
+        &lt;img src=&#123;item.image_url&#125; alt="Gambar Item" /&gt;
+      </code>
+    </section>
+
+    <section class="main-section" id="tampilkan-angka">
+      <header>Tampilkan Angka</header>
+      <p>Contoh menampilkan angka statistik:</p>
+      <code>
+        &lt;p&gt;Total Produk: &#123;data.length&#125;&lt;/p&gt;
+      </code>
+    </section>
+
+    <section class="main-section" id="tipe-objek">
+      <header>Tipe Objek (TypeScript)</header>
+      <p>Gunakan tipe agar data lebih jelas dan aman:</p>
+      <code>
+        interface Product &#123;<br />
+        &nbsp;&nbsp;id: number;<br />
+        &nbsp;&nbsp;title: string;<br />
+        &nbsp;&nbsp;price: number;<br />
+        &nbsp;&nbsp;image_url: string;<br />
+        &#125;<br /><br />
+
+        const [products, setProducts] = useState&lt;Product[]&gt;([]);
+      </code>
+    </section>
+
+    <section class="main-section" id="js-ke-ts">
+      <header>JS ke TS</header>
+      <p>Contoh konversi React JavaScript ke TypeScript:</p>
+      <code>
+        // JavaScript:<br />
+        const [data, setData] = useState([]);<br /><br />
+
+        // TypeScript:<br />
+        const [data, setData] = useState&lt;MyType[]&gt;([]);
+      </code>
+    </section>
+
+    <section class="main-section" id="deep-dive">
+      <header>Deep Dive & Tips</header>
+      <ul>
+        <li>Gunakan try-catch dengan async/await untuk penanganan error yang lebih rapi.</li>
+        <li>Pisahkan fungsi fetch ke file <code>service/api.ts</code>.</li>
+        <li>Gunakan React Query atau SWR untuk fetch API yang lebih canggih.</li>
+        <li>Gunakan <code>.env</code> untuk menyimpan BASE_URL API.</li>
+      </ul>
+    </section>
+
+    <section class="main-section" id="struktur">
+      <header>Struktur Folder</header>
+      <code>
+        /src<br />
+        ├── components/<br />
+        ├── pages/<br />
+        ├── services/api.ts<br />
+        ├── types/<br />
+        │&nbsp;&nbsp;└── product.ts<br />
+        ├── App.tsx<br />
+        └── main.tsx
+      </code>
+    </section>
+
+    <section class="main-section" id="push-github">
+      <header>Push Code ke GitHub</header>
+      <code>
+        git init<br />
+        git remote add origin https://github.com/username/nama-repo<br />
+        git add .<br />
+        git commit -m "First commit"<br />
+        git branch -M main<br />
+        git push -u origin main
+      </code>
+    </section>
+
+    <section class="main-section" id="vscode">
+      <header>Koding Langsung di VSCode</header>
+      <ul>
+        <li>Install ekstensi: ESLint, Prettier, React Snippets</li>
+        <li>Gunakan auto import & format on save</li>
+        <li>Split terminal: 1 untuk server, 1 untuk git</li>
+      </ul>
+    </section>
+
+    <section class="main-section" id="ekstensi-drink">
+      <header>Drink Water Reminder</header>
+      <p>
+        Install ekstensi VSCode <strong>Drink Water Pop Up</strong> buatan MatrixSync:
+      </p>
+      <a
+        href="https://marketplace.visualstudio.com/manage/publishers/matrixsync/extensions/drinkwater-extension/hub"
+        target="_blank"
+        >Ngoding mulu, minum air jangan ke skip!</a
+      >
+    </section>
+
+    <section class="main-section" id="tips-deep">
+      <header>Tips Lanjutan</header>
+      <ul>
+        <li>Gunakan React Query atau SWR untuk fetch otomatis</li>
+        <li>Gunakan absolute import (ubah tsconfig.json)</li>
+        <li>Tambahkan dark mode dengan Tailwind</li>
+        <li>Buat reusable component + prop types</li>
+      </ul>
+    </section>
+
+    <section class="main-section" id="penutup">
+      <header>Penutup</header>
+      <p>
+        Kamu punya pondasi kuat jadi Frontend Engineer modern. Jangan lupa istirahat dan minum air ya!
+        Axios + React + TypeScript = kombinasi mantap untuk aplikasi modern. Dengan dokumentasi ini, kamu sudah punya pondasi untuk mulai bikin dashboard, galeri, marketplace, atau aplikasi apapun dengan API.
+      </p>
+    </section>
+  </main>
+</body>
+</html>
